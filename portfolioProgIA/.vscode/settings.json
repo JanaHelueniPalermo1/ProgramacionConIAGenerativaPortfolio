@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "C:/Users/janah/AppData/Local/Programs/Python/Python311/python.exe",
+    "python.analysis.extraPaths": [
+        "./clase3",
+        "./clase3/src"
+    ]
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Stock</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="background-shape"></div>
+    <main class="container">
+        <header class="hero">
+            <p class="tag">Sistema Basico</p>
+            <h1>Gestion de stock de productos</h1>
+            <p class="subtitle">Crea productos y visualiza el inventario ordenado por nombre.</p>
+        </header>
+
+        <nav class="menu" aria-label="Menu principal">
+            <button class="menu-btn active" data-target="cargar">Cargar producto</button>
+            <button class="menu-btn" data-target="listar">Listar producto</button>
+        </nav>
+
+        <section id="cargar" class="panel active">
+            <h2>Alta de productos</h2>
+            <form id="product-form" novalidate>
+                <div class="field-group">
+                    <label for="nombre">Nombre</label>
+                    <input id="nombre" name="nombre" type="text" required>
+                </div>
+                <div class="field-group">
+                    <label for="codigo">Codigo de producto</label>
+                    <input id="codigo" name="codigo" type="number" min="0" step="1" required>
+                </div>
+                <div class="field-group">
+                    <label for="precio">Precio</label>
+                    <input id="precio" name="precio" type="number" min="0" step="0.01" required>
+                </div>
+                <div class="field-group">
+                    <label for="stock">Stock</label>
+                    <input id="stock" name="stock" type="number" min="0" step="1" required>
+                </div>
+                <button type="submit" class="primary-btn">Guardar producto</button>
+                <p id="form-message" class="message" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section id="listar" class="panel">
+            <div class="list-header">
+                <h2>Listado de productos</h2>
+                <button id="refresh-btn" class="secondary-btn">Actualizar</button>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Codigo</th>
+                            <th>Precio</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody id="products-body">
+                        <tr>
+                            <td colspan="4" class="empty">Aun no hay productos cargados.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
